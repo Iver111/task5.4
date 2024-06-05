@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Обчислення функції</title>
+</head>
+<body>
+
+<h2>Результати обчислень</h2>
+<table border="1">
+  <tr>
+    <th>x</th>
+    <th>y</th>
+  </tr>
+</table>
+
+<script>
+  // Функція обчислення значення функції в залежності від значення аргументу x
+  function computeFunction(x) {
+    var result;
+    if (x < 2) {
+      result = Math.cos(4 * x) - 5;
+    } else if (x === 2) {
+      result = Math.pow(Math.abs(Math.tan(x)), 3);
+    } else {
+      result = 2 + Math.cbrt(x);
+    }
+    return result;
+  }
+
+  // Ввід меж зміни значень аргументу x та кроку зміни значень аргументу
+  var start = parseFloat(prompt("Введіть початкове значення x:"));
+  var end = parseFloat(prompt("Введіть кінцеве значення x:"));
+  var step = parseFloat(prompt("Введіть крок зміни значень аргументу x:"));
+
+  // Отримання таблиці результатів
+  var table = document.querySelector('table');
+
+  // Обчислення та виведення значень функції
+  var x = start;
+  while (x <= end) {
+    var y = computeFunction(x);
+    var row = table.insertRow(-1);
+    var xCell = row.insertCell(0);
+    var yCell = row.insertCell(1);
+    xCell.textContent = x;
+    yCell.textContent = y;
+    x += step;
+  }
+</script>
+
+</body>
+</html>
